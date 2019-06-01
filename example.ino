@@ -1,3 +1,6 @@
+// based Row-Column Scanning an 8x8 LED matrix examples wiring
+// analog input A1 controls speed of moving pixels
+
 #include <Scheduler_int_param.h>
 
 
@@ -46,12 +49,6 @@ void setup() {
   }
   x = 0;
   y = 0;
-  //---------------------------------------------------------
-  // sched.addTask(movePixelX)->withInterval(100)->withRepeatCount(0);
-  //  sched.addTask(movePixelY)->withInterval(799)->withRepeatCount(0)->withShift(0);
-//  for (int i = 0; i < 8; i++) {
-//    sched.addTask(moveLine, i)->withInterval((random(9) + 10) * 20)->withRepeatCount(0);
-//  }
 
 }
 
@@ -80,18 +77,6 @@ void readSensors() {
   Serial.print(sensor);
 
 
-}
-
-
-void movePixelX() {
-  pixels[x][y] = HIGH;
-  x = (x + 1) >= 8 ? 0 : (x + 1);
-  pixels[x][y] = LOW;
-}
-void movePixelY() {
-  pixels[x][y] = HIGH;
-  y = (y + 1) >= 8 ? 0 : (y + 1);
-  pixels[x][y] = LOW;
 }
 
 void moveLine(int line) {
